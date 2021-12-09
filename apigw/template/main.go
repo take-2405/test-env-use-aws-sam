@@ -1,18 +1,17 @@
 package main
 
 import (
-	"github.com/aws/aws-lambda-go/events"
 	"github.com/aws/aws-lambda-go/lambda"
+	"template/pkg/application"
+	"template/pkg/domain/repository"
+	"template/pkg/infrastructure"
+	"template/pkg/presentation"
 )
 
-func handler(request events.APIGatewayProxyRequest) (events.APIGatewayProxyResponse, error) {
-	res := "this is template"
-	return events.APIGatewayProxyResponse{
-		Body:       res,
-		StatusCode: 200,
-	}, nil
-}
-
 func main() {
-	lambda.Start(handler)
+	btcPersistence := infrastructure.NewPlayDataPersistence()
+	btcRepository := repository.BtcDataRepository(btcPersistence)
+	btcUseCase := application.NewBtcUseCase(btcRepository)
+	handler := presentation.NewBTCHandler(btcUseCase)
+	lambda.Start(handler.HandleBtcRanking)
 }
