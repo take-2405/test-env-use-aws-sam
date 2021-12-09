@@ -1,0 +1,27 @@
+{
+  "TableName": "btc-rate",
+  "KeySchema": [
+    {
+      "AttributeName": "rate",
+      "KeyType": "HASH"
+    },
+    {
+      "AttributeName": "timestamp",
+      "KeyType": "RANGE"
+    }
+  ],
+  "AttributeDefinitions": [
+    {
+      "AttributeName": "timestamp",
+      "AttributeType": "N"
+    },
+    {
+      "AttributeName": "rate",
+      "AttributeType": "N"
+    }
+  ],
+  "ProvisionedThroughput": {
+    "ReadCapacityUnits": 4,
+    "WriteCapacityUnits": 4
+  }
+}
