@@ -68,3 +68,5 @@ aws dynamodb scan --table-name local_company_table --profile local --endpoint-ur
     "ConsumedCapacity": null
 }
 ```
+# 作成者  
+若松丈人
