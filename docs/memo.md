@@ -6,3 +6,7 @@ dynamodbのKeyTypeについて
 KeyType  
 - Hash：パーティションキー
 - Range：ソートキー
+
+
+
+GOOS=linux GOARCH=amd64 go build -o ./template ./main.go 
